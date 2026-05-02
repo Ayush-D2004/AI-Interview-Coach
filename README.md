@@ -8,16 +8,39 @@ sdk_version: 6.14.0
 # AI Interview Coach
 
 ## Project Overview
-The **AI Interview Coach** is a production-grade application designed to provide structured, adaptive, and realistic interview simulations. It uses a multi-agent orchestration system to handle candidate intake, dynamic interview planning, real-time speech-to-text processing, and detailed performance evaluation.
+The **AI Interview Coach** is designed to provide structured, adaptive, and realistic interview simulations. By leveraging a multi-agent orchestration system, it delivers a goal-oriented experience tailored to each candidate's target role, seniority level, and technical expertise.
 
-The system is built on a deterministic state machine, ensuring that the interview remains professional, goal-oriented, and tailored to the candidate's target role and focus areas.
+## System Architecture
+The application uses a specialized multi-agent design where each agent handles a specific phase of the interview lifecycle. A central Interview Orchestrator manages the deterministic state machine to ensure a professional and consistent flow.
+
+### Agent Roles
+
+*   **Profile Agent**: Analyzes candidate intake data that includes target roles, focus areas, and uploaded resumes—to construct a comprehensive internal candidate profile.
+*   **Grounding Agent**: Uses real-time web search tools to identify current industry standards, role-specific expectations, and relevant interview topics for the candidate's chosen domain.
+*   **Strategist Agent**: Manages the live interview logic. It reviews session history to select the most relevant next question, manages topic transitions, and adjusts difficulty dynamically.
+*   **Evaluator Agent**: Performs real-time analysis of candidate responses. It scores answers on technical accuracy, reasoning depth, and clarity, providing the feedback used to tune the interview strategy.
+*   **Coach Agent**: Triggered at the end of the session to synthesize the full interview history into an actionable performance report.
+
+### Orchestration Workflow
+The system moves through four distinct states:
+1.  **Intake**: Capturing user context and experience data.
+2.  **Context Building**: Running Profile and Grounding agents to set the interview baseline.
+3.  **Interview Loop**: Alternating between questioning (Strategist), transcription (STT), and evaluation (Evaluator).
+4.  **Finalization**: Generating the final coach's report and archiving session data.
+
+### Design Decisions and Tradeoffs
+
+*   **Task Specialization**: Breaking the simulation into independent agents increases reliability and allows for modular debugging of complex behaviors like grading or strategic planning.
+*   **Latency vs. Accuracy**: Integrating high-accuracy transcription (AssemblyAI) with multiple LLM calls adds some latency. The system uses a responsive UI architecture to manage these transitions smoothly.
+*   **Privacy-First Persistence**: All session states, resumes, and transcripts are stored locally. This prioritizes data privacy and allows for offline review of reports once a session is complete.
+*   **Structural Integrity**: Using a hard-coded state machine for orchestration ensures the interview remains goal-oriented and prevents the "drifting" often seen in purely chat-based AI simulations.
 
 ## Key Features
 *   **Intake Profile Builder**: Seamlessly capture your target role and focus areas. Upload your resume (PDF) to ground the interview in your actual experience.
 *   **Adaptive Interview Room**:
     *   **Live Webcam Preview**: Stay focused and maintain professional posture with a live camera feed.
     *   **Interactive Chatbot**: Engages you in a realistic dialogue with follow-up questions.
-    *   **Dual Input Modes**: Respond using your microphone (powered by AssemblyAI) or type your answers manually.
+    *   **Dual Input Modes**: Respond using your microphone or type your answers manually.
 *   **Intelligent Evaluation & Coaching**:
     *   **Real-time Feedback**: View AI evaluations of your responses, including scoring on correctness, reasoning, and clarity.
     *   **Dynamic Difficulty**: The AI adjusts the challenge level (Easy, Medium, Hard, Expert) based on your performance.
@@ -52,10 +75,11 @@ The application requires several API keys to function.
     cp .env.example .env
     ```
 2.  Open the `.env` file in a text editor and fill in your keys:
-    *   `GEMINI_API_KEY`: Get from [Google AI Studio](https://aistudio.google.com/)
-    *   `ASSEMBLYAI_API_KEY`: Get from [AssemblyAI Dashboard](https://www.assemblyai.com/dashboard)
-    *   `FIRECRAWL_API_KEY`: (Optional) For real-time grounding.
-    *   `GROQ_API_KEY`: (Optional) For fallback models.
+    *   `GEMINI_API_KEY`: Get from [Google AI Studio](https://aistudio.google.com)
+    *   `ASSEMBLYAI_API_KEY`: Get from [AssemblyAI](https://www.assemblyai.com)
+    *   `FIRECRAWL_API_KEY`: Get from [FireCrawl](https://www.firecrawl.dev)
+    *   `OPENROUTER_API_KEY`: Get from [OpenRouter](https://openrouter.ai)
+    *   `GROQ_API_KEY`: Get from [Groq](https://groq.com)
 
 ### 3. Create and Activate Virtual Environment
 We use a virtual environment to manage dependencies.
@@ -104,5 +128,5 @@ pip install -r requirements.txt
 
 ---
 
-## Data Persistence
-All session transcripts, metrics, and generated reports are saved locally in the `data/sessions` directory for your review.
+## Interview Samples
+All session transcripts, metrics, and generated reports are saved locally in the [data/sessions](./data/sessions) directory.

@@ -1,0 +1,192 @@
+{
+  "session_id": "735a3d60-f969-44e2-adca-78f549d05a3b",
+  "candidate_profile": {
+    "role": "AI Engineer",
+    "focus_area": "AI, LLM, RAG, Fullstack development",
+    "seniority_guess": "junior",
+    "experience_years_guess": null,
+    "summary": "Computer Science undergraduate focused on building reliable AI and backend systems under production constraints. Has experience designing and optimizing data pipelines, retrieval workflows, API services, and LLM evaluation workflows with an emphasis on accuracy, latency, and operational correctness.",
+    "skills": [
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "C++",
+      "SQL",
+      "Node.js",
+      "Flask",
+      "Django",
+      "FastAPI",
+      "JWT",
+      "LangGraph",
+      "LangChain",
+      "FAISS",
+      "Sentence-Transformers",
+      "Prompt Engineering",
+      "RAG",
+      "LLM Evaluation",
+      "PyTorch",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Seaborn",
+      "Plotly",
+      "PostgreSQL",
+      "MySQL",
+      "SQLite",
+      "Query Optimization",
+      "Git",
+      "Docker",
+      "Linux",
+      "CI/CD",
+      "GCP",
+      "AWS"
+    ],
+    "projects": [
+      "FinAnalyst: Designed a RAG pipeline for financial documents, improving answer correctness and retrieval recall, and built an automated evaluation harness.",
+      "AutoSQL: Built an AI-powered SQL Editor to convert natural language into SQL queries with schema visualization, reducing invalid query generation and improving reliability.",
+      "Expense Manager: Developed a multi-tenant wallet system with role-based access control, maintaining low API latency and real-time sync, and containerized with Docker."
+    ],
+    "links": [],
+    "strengths": [
+      "Strong foundational knowledge in AI/ML, particularly LLM and RAG systems.",
+      "Proficiency in full-stack development with Python backends (FastAPI) and React frontends.",
+      "Experience in designing and optimizing data pipelines and ETL processes.",
+      "Focus on system reliability, performance, and evaluation metrics (accuracy, latency).",
+      "Practical skills in containerization (Docker) and CI/CD for deployment."
+    ],
+    "gaps": [
+      "Limited professional experience beyond a short internship.",
+      "Lack of demonstrated experience with large-scale, production-grade AI system deployment.",
+      "Potentially less exposure to advanced MLOps practices and distributed ML training.",
+      "Limited experience in collaborative development on larger, complex software projects.",
+      "No explicit mention of experience with specific cloud-native AI/ML services (e.g., AWS SageMaker, GCP AI Platform)."
+    ],
+    "risk_flags": [],
+    "avoid_topics": [
+      "RAG pipeline design and optimization techniques.",
+      "LLM evaluation methodologies and metrics.",
+      "FastAPI and asynchronous API development.",
+      "Data pipeline engineering and optimization strategies.",
+      "Full-stack development using React and Python."
+    ]
+  },
+  "turn_history": [
+    {
+      "turn_id": 1,
+      "question": "Tell me about a project where you integrated a Large Language Model (LLM) into an application. What was the goal, and how did you approach the integration?",
+      "raw_audio_path": null,
+      "transcript": "I have worked on integrating LLM with applications many times one particular use case was in AutoSQL which is an AI powered SQL editor with schema visualization. In this project I primarily used google's gemini  model to generate SQL queries that go through validations checks and help the user in accessing SQL databases with ease. In this project I used LangGraph as an agent orchestrator and integrated LLM using it's defined algorithm.",
+      "normalized_transcript": "I have worked on integrating LLM with applications many times one particular use case was in AutoSQL which is an AI powered SQL editor with schema visualization. In this project I primarily used google's gemini  model to generate SQL queries that go through validations checks and help the user in accessing SQL databases with ease. In this project I used LangGraph as an agent orchestrator and integrated LLM using it's defined algorithm.",
+      "evaluator_json": {
+        "turn_id": 1,
+        "score_overall": 4,
+        "dimensions": {
+          "correctness": 5,
+          "specificity": 2,
+          "reasoning": 2,
+          "clarity": 4,
+          "role_relevance": 5,
+          "honesty_under_uncertainty": 5,
+          "communication": 4
+        },
+        "strengths": [
+          "The candidate clearly identified a relevant project involving LLM integration: \"one particular use case was in AutoSQL which is an AI powered SQL editor with schema visualization.\"",
+          "They named specific LLM technologies and frameworks used: \"google's gemini model\" and \"LangGraph as an agent orchestrator.\"",
+          "The goal of the integration was clearly stated: \"to generate SQL queries that go through validations checks and help the user in accessing SQL databases with ease.\""
+        ],
+        "gaps": [
+          "The answer lacked specific details on *how* the integration was approached beyond naming the tools. For example, details on API calls, data flow, prompt engineering, specific challenges encountered, or how the 'validations checks' were implemented were missing.",
+          "The explanation of LangGraph's role was high-level (\"integrated LLM using it's defined algorithm\") and did not elaborate on the specific algorithm or design choices made within LangGraph."
+        ],
+        "misconceptions": [],
+        "followup_needed": true,
+        "followup_reason": "The candidate provided high-level tools and goals but lacked specific details on the integration approach, design decisions, and implementation details, which was a key part of the question.",
+        "confidence": 0.7,
+        "evidence_spans": [
+          "I have worked on integrating LLM with applications many times",
+          "one particular use case was in AutoSQL which is an AI powered SQL editor with schema visualization",
+          "In this project I primarily used google's gemini model to generate SQL queries that go through validations checks and help the user in accessing SQL databases with ease",
+          "In this project I used LangGraph as an agent orchestrator and integrated LLM using it's defined algorithm"
+        ],
+        "recommended_next_difficulty": "hard"
+      },
+      "strategist_decision": {
+        "next_question": "You mentioned that the generated SQL queries went through validation checks. Can you elaborate on the types of validations you implemented and what challenges you faced in ensuring the correctness and reliability of the generated SQL?",
+        "follow_up_type": "difficulty_escalation",
+        "competency": "AI - reliability and validation",
+        "difficulty_adjustment": "increase",
+        "stop_or_continue": "continue",
+        "rationale": "The candidate performed well on the initial question, and the evaluator recommended increasing difficulty and further follow-up, so this question probes deeper into the technical challenges of ensuring reliability."
+      },
+      "timestamps": null,
+      "metrics": null
+    },
+    {
+      "turn_id": 2,
+      "question": "You mentioned that the generated SQL queries went through validation checks. Can you elaborate on the types of validations you implemented and what challenges you faced in ensuring the correctness and reliability of the generated SQL?",
+      "raw_audio_path": null,
+      "transcript": "The validation checks I included were based on schema compliance, harmful SQL check like delete and remove and code syntactical correctness. The primary challenge I faced here was handling objects and their relations  which i handled using SQLAlchemy ORM layer",
+      "normalized_transcript": "The validation checks I included were based on schema compliance, harmful SQL check like delete and remove and code syntactical correctness. The primary challenge I faced here was handling objects and their relations  which i handled using SQLAlchemy ORM layer",
+      "evaluator_json": {
+        "turn_id": 2,
+        "score_overall": 4,
+        "dimensions": {
+          "correctness": 5,
+          "specificity": 4,
+          "reasoning": 3,
+          "clarity": 4,
+          "role_relevance": 5,
+          "honesty_under_uncertainty": 5,
+          "communication": 4
+        },
+        "strengths": [
+          "Candidate correctly identified common and crucial validation checks for generated SQL: \"schema compliance\", \"harmful SQL check like delete and remove\", and \"code syntactical correctness\".",
+          "Candidate articulated a relevant challenge in SQL generation: \"handling objects and their relations\".",
+          "Candidate provided a specific and appropriate solution to the identified challenge: \"handled using SQLAlchemy ORM layer\"."
+        ],
+        "gaps": [
+          "The candidate could have elaborated on the specific implementation details of the validation checks (e.g., how schema compliance was programmatically enforced, specific rules for 'harmful SQL').",
+          "The reasoning behind *why* handling objects and relations was a primary challenge in the context of *generated* SQL, and *how* SQLAlchemy specifically addressed the generation aspect of this challenge, could have been more detailed.",
+          "The answer did not mention other potential challenges such as performance optimization, handling complex joins, or ensuring data consistency across different database versions."
+        ],
+        "misconceptions": [],
+        "followup_needed": false,
+        "followup_reason": null,
+        "confidence": 1.0,
+        "evidence_spans": [
+          "The validation checks I included were based on schema compliance, harmful SQL check like delete and remove and code syntactical correctness.",
+          "The primary challenge I faced here was handling objects and their relations which i handled using SQLAlchemy ORM layer"
+        ],
+        "recommended_next_difficulty": "hard"
+      },
+      "strategist_decision": {
+        "next_question": "You've described the validation process for the generated SQL. Thinking more broadly about the AutoSQL system, how did you approach ensuring its overall reliability and performance once it was deployed or being prepared for deployment? What key metrics did you focus on?",
+        "follow_up_type": "angle_change",
+        "competency": "AI system reliability and performance",
+        "difficulty_adjustment": "maintain",
+        "stop_or_continue": "continue",
+        "rationale": "The candidate performed well on specific technical details, so this question probes into broader system reliability and performance, aligning with AI Engineer responsibilities and candidate strengths."
+      },
+      "timestamps": null,
+      "metrics": null
+    },
+    {
+      "turn_id": 3,
+      "question": "You've described the validation process for the generated SQL. Thinking more broadly about the AutoSQL system, how did you approach ensuring its overall reliability and performance once it was deployed or being prepared for deployment? What key metrics did you focus on?",
+      "raw_audio_path": null,
+      "transcript": null,
+      "normalized_transcript": null,
+      "evaluator_json": null,
+      "strategist_decision": null,
+      "timestamps": null,
+      "metrics": null
+    }
+  ],
+  "difficulty_level": "hard",
+  "current_topic": "AI system reliability and performance",
+  "completed_topics": [],
+  "current_turn_index": 3,
+  "status": "FINAL_REPORT",
+  "final_report_path": "data/sessions\\735a3d60-f969-44e2-adca-78f549d05a3b\\report.md"
+}

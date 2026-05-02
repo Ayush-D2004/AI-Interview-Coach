@@ -10,7 +10,6 @@ __pycache__/
 .pytest_cache/
 
 # Local Data
-sessions/
 logs/
 
 # IDEs

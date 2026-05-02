@@ -1,0 +1,6 @@
+{"turn_id": 0, "agent": "ProfileAgent", "metrics": {"provider_used": "gemini_flash", "fallback_triggered": false, "latency_ms": 6397, "retry_count": 0, "structured_parse_success": true, "error_message": null}}
+{"turn_id": 0, "agent": "GroundingAgent", "metrics": {"provider_used": "gemini_flash", "fallback_triggered": false, "latency_ms": 5974, "retry_count": 0, "structured_parse_success": true, "error_message": null}}
+{"turn_id": 1, "agent": "StrategistAgent", "metrics": {"provider_used": "gemini_flash", "fallback_triggered": false, "latency_ms": 7879, "retry_count": 0, "structured_parse_success": true, "error_message": null}}
+{"turn_id": 1, "agent": "EvaluatorAgent", "metrics": {"provider_used": "gemini_flash", "fallback_triggered": false, "latency_ms": 8001, "retry_count": 0, "structured_parse_success": true, "error_message": null}}
+{"turn_id": 1, "agent": "StrategistAgent", "metrics": {"provider_used": "gemini_flash", "fallback_triggered": false, "latency_ms": 6642, "retry_count": 0, "structured_parse_success": true, "error_message": null}}
+{"turn_id": 2, "agent": "CoachAgent", "metrics": {"provider_used": "gemini_flash", "fallback_triggered": false, "latency_ms": 11849, "retry_count": 0, "structured_parse_success": true, "error_message": null}}
