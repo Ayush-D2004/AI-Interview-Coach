@@ -11,6 +11,6 @@ if __name__ == "__main__":
     app = create_ui()
     app.launch(
         server_name="127.0.0.1",
-        share=False,
+        share=True,
         css=custom_css,
     )
