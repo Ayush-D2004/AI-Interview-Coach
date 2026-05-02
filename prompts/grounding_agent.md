@@ -8,7 +8,7 @@ You receive:
 - `target_role`: the role the candidate is interviewing for
 - `focus_area`: the specific domain or competency cluster
 - `company_name`: optional; if provided, try to find company-specific signals
-- `search_results`: a list of search results from Brave Search, each with `title`, `url`, and `snippet`
+- `search_results`: a list of search results from Firecrawl, each with `title`, `url`, and `snippet`
 
 ## Output Format
 Return **only valid JSON**. No prose, no markdown fences. Conform exactly to this schema:

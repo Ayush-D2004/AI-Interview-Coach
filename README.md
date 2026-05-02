@@ -17,7 +17,7 @@ The AI Mock Interview Coach is a production-grade application designed to provid
 - AI Models: Google Gemini (Flash and Pro), Groq (Llama-3), and OpenRouter.
 - Speech-to-Text: AssemblyAI (Real-time and Sync API), faster-whisper (Local).
 - Data Validation: Pydantic v2.
-- Grounding: Brave Search API for real-time role and industry expectations.
+- Grounding: Firecrawl API for real-time role and industry expectations.
 - Documentation & Reporting: Markdown.
 
 ## Installation and Setup
@@ -32,7 +32,7 @@ The AI Mock Interview Coach is a production-grade application designed to provid
 3. Obtain and enter the following API keys:
    - GEMINI_API_KEY: For primary LLM functionality.
    - ASSEMBLYAI_API_KEY: For speech-to-text processing.
-   - BRAVE_API_KEY: For real-time grounding search.
+   - FIRECRAWL_API_KEY: For real-time grounding search.
    - GROQ_API_KEY: For fallback LLM performance.
    - OPENROUTER_API_KEY: For additional model fallbacks.
 

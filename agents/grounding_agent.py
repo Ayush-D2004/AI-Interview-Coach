@@ -18,27 +18,34 @@ class GroundingResult:
 
 class GroundingAgent:
     def __init__(self):
-        self.api_key = os.environ.get("BRAVE_API_KEY")
-        self.search_url = "https://api.search.brave.com/res/v1/web/search"
+        self.api_key = os.environ.get("FIRECRAWL_API_KEY")
+        if self.api_key:
+            try:
+                from firecrawl import FirecrawlApp
+                self.app = FirecrawlApp(api_key=self.api_key)
+            except ImportError:
+                logger.error("firecrawl-py not installed. Run: pip install firecrawl-py")
+                self.app = None
+        else:
+            self.app = None
 
     def _search(self, query: str, num_results: int = 5) -> list[dict]:
-        if not self.api_key:
-            logger.warning("BRAVE_API_KEY not set. Grounding agent will return empty results.")
+        if not self.app:
+            logger.warning("FIRECRAWL_API_KEY not set or FirecrawlApp not initialized. Grounding agent will return empty results.")
             return []
-        headers = {
-            "Accept": "application/json",
-            "Accept-Encoding": "gzip",
-            "X-Subscription-Token": self.api_key,
-        }
-        params = {"q": query, "count": num_results}
         try:
-            response = requests.get(self.search_url, headers=headers, params=params, timeout=8)
-            response.raise_for_status()
-            data = response.json()
-            results = data.get("web", {}).get("results", [])
-            return [{"title": r.get("title", ""), "url": r.get("url", ""), "snippet": r.get("description", "")} for r in results]
+            response = self.app.search(query)
+            results = []
+            if hasattr(response, "web") and response.web:
+                for r in response.web[:num_results]:
+                    results.append({
+                        "title": getattr(r, "title", ""),
+                        "url": getattr(r, "url", ""),
+                        "snippet": getattr(r, "description", "")
+                    })
+            return results
         except Exception as e:
-            logger.error(f"Brave search error: {e}")
+            logger.error(f"Firecrawl search error: {e}")
             return []
 
     def run(self, target_role: str, focus_area: str, company_name: Optional[str], llm_manager) -> tuple[Optional[GroundingResult], Optional[Any]]:
@@ -88,8 +95,13 @@ Search Results:
             return None, metrics
 
         import json
+        import re
         try:
-            data = json.loads(response_text)
+            # Clean markdown JSON formatting if present
+            clean_text = re.sub(r'```json\s*', '', response_text)
+            clean_text = re.sub(r'```\s*', '', clean_text).strip()
+            
+            data = json.loads(clean_text)
             res = GroundingResult(
                 role_expectations=data.get("role_expectations", []),
                 common_interview_topics=data.get("common_interview_topics", []),
