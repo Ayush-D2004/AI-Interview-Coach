@@ -4,10 +4,11 @@ app_file: app.py
 sdk: gradio
 sdk_version: 6.14.0
 ---
-# AI Mock Interview Coach
+
+# AI Interview Coach
 
 ## Project Overview
-The **AI Mock Interview Coach** is a production-grade application designed to provide structured, adaptive, and realistic interview simulations. It uses a multi-agent orchestration system to handle candidate intake, dynamic interview planning, real-time speech-to-text processing, and detailed performance evaluation.
+The **AI Interview Coach** is a production-grade application designed to provide structured, adaptive, and realistic interview simulations. It uses a multi-agent orchestration system to handle candidate intake, dynamic interview planning, real-time speech-to-text processing, and detailed performance evaluation.
 
 The system is built on a deterministic state machine, ensuring that the interview remains professional, goal-oriented, and tailored to the candidate's target role and focus areas.
 
