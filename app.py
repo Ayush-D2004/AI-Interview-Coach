@@ -5,10 +5,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import gradio as gr
-from ui.dashboard import create_ui
+from ui.dashboard import create_ui, custom_css
 
 if __name__ == "__main__":
     app = create_ui()
-    # Launch Gradio on 0.0.0.0:7860
-    theme = gr.themes.Soft(primary_hue="indigo", secondary_hue="blue")
-    app.launch(server_name="127.0.0.1", server_port=7860, share=False, theme=theme)
+    app.launch(
+        server_name="127.0.0.1",
+        share=False,
+        css=custom_css,
+    )

@@ -1,63 +1,107 @@
+---
+title: AI_Interview_Coach
+app_file: app.py
+sdk: gradio
+sdk_version: 6.14.0
+---
 # AI Mock Interview Coach
 
 ## Project Overview
-The AI Mock Interview Coach is a production-grade application designed to provide structured, adaptive, and realistic interview simulations. The system employs a multi-agent architecture to handle candidate intake, interview planning, real-time speech-to-text processing, answer evaluation, and comprehensive coaching feedback. Unlike generic chatbots, this system follows a deterministic state machine to ensure a professional and goal-oriented interview experience.
+The **AI Mock Interview Coach** is a production-grade application designed to provide structured, adaptive, and realistic interview simulations. It uses a multi-agent orchestration system to handle candidate intake, dynamic interview planning, real-time speech-to-text processing, and detailed performance evaluation.
 
-## Core Functionalities
-- Multi-Agent Orchestration: Utilizing distinct agents for profile building, interview strategy, answer evaluation, and final coaching.
-- Adaptive Interviewing: The system adjusts question difficulty (Easy, Medium, Hard, Expert) and topics dynamically based on the candidate's performance.
-- Speech-to-Text Integration: Primary input via microphone using AssemblyAI for transcription, with a local fallback to faster-whisper.
-- Automated Evaluation: Structured scoring across multiple dimensions including correctness, specificity, reasoning, clarity, and communication.
-- Final Coaching Report: Generates a detailed Markdown report at the conclusion of the session, highlighting strengths and areas for improvement.
-- Web-Based Dashboard: A 3-column Gradio interface providing a seamless user experience from intake to feedback.
+The system is built on a deterministic state machine, ensuring that the interview remains professional, goal-oriented, and tailored to the candidate's target role and focus areas.
+
+## Key Features
+*   **Intake Profile Builder**: Seamlessly capture your target role and focus areas. Upload your resume (PDF) to ground the interview in your actual experience.
+*   **Adaptive Interview Room**:
+    *   **Live Webcam Preview**: Stay focused and maintain professional posture with a live camera feed.
+    *   **Interactive Chatbot**: Engages you in a realistic dialogue with follow-up questions.
+    *   **Dual Input Modes**: Respond using your microphone (powered by AssemblyAI) or type your answers manually.
+*   **Intelligent Evaluation & Coaching**:
+    *   **Real-time Feedback**: View AI evaluations of your responses, including scoring on correctness, reasoning, and clarity.
+    *   **Dynamic Difficulty**: The AI adjusts the challenge level (Easy, Medium, Hard, Expert) based on your performance.
+    *   **Topic Tracking**: Monitors your progress across different technical and behavioral domains.
+*   **Comprehensive Final Report**: At the end of the session, the system generates a detailed Markdown coaching report with strengths, weaknesses, and actionable improvement tips.
 
 ## Tech Stack
-- Frontend: Gradio
-- Language: Python 3.10+
-- AI Models: Google Gemini (Flash and Pro), Groq (Llama-3), and OpenRouter.
-- Speech-to-Text: AssemblyAI (Real-time and Sync API), faster-whisper (Local).
-- Data Validation: Pydantic v2.
-- Grounding: Firecrawl API for real-time role and industry expectations.
-- Documentation & Reporting: Markdown.
+*   **Interface**: Gradio (Web-based dashboard)
+*   **Language**: Python 3.10+
+*   **LLM Orchestration**: Google Gemini (Pro/Flash), Groq (Llama-3), and OpenRouter
+*   **Speech-to-Text**: AssemblyAI (Primary), Faster-Whisper (Local Fallback)
+*   **Grounding**: Firecrawl API for role/industry research
+*   **Data Validation**: Pydantic v2
 
-## Installation and Setup
+---
 
-### Prerequisites
-- Python 3.10 or higher.
-- A virtual environment is highly recommended.
+## Setup and Installation
 
-### Configuration
-1. Clone the repository to your local machine.
-2. Create a .env file in the root directory. You can use the .env.example file as a template.
-3. Obtain and enter the following API keys:
-   - GEMINI_API_KEY: For primary LLM functionality.
-   - ASSEMBLYAI_API_KEY: For speech-to-text processing.
-   - FIRECRAWL_API_KEY: For real-time grounding search.
-   - GROQ_API_KEY: For fallback LLM performance.
-   - OPENROUTER_API_KEY: For additional model fallbacks.
+Follow these detailed steps to get the project running on your local machine.
 
-### Installation Steps
-1. Navigate to the project root directory.
-2. Install the required dependencies using pip:
-   pip install -r requirements.txt
+### 1. Clone the Project
+Open your terminal or command prompt and run:
+```bash
+git clone https://github.com/Ayush-D2004/AI-Interview-Coach.git
+cd AI-Interview-Coach
+```
 
-## Running the Application
-To launch the AI Mock Interview Coach, execute the following command in your terminal:
+### 2. Environment Configuration
+The application requires several API keys to function. 
+1.  Copy the example environment file:
+    ```bash
+    cp .env.example .env
+    ```
+2.  Open the `.env` file in a text editor and fill in your keys:
+    *   `GEMINI_API_KEY`: Get from [Google AI Studio](https://aistudio.google.com/)
+    *   `ASSEMBLYAI_API_KEY`: Get from [AssemblyAI Dashboard](https://www.assemblyai.com/dashboard)
+    *   `FIRECRAWL_API_KEY`: (Optional) For real-time grounding.
+    *   `GROQ_API_KEY`: (Optional) For fallback models.
 
-python app.py
+### 3. Create and Activate Virtual Environment
+We use a virtual environment to manage dependencies.
 
-Once the server initializes, the terminal will display a local URL (typically http://127.0.0.1:7860). Open this address in your web browser to access the dashboard.
+**On Windows:**
+```powershell
+python -m venv coach
+.\coach\Scripts\activate
+```
 
-## System Architecture
-The application operates as a state machine with the following phases:
-1. INTAKE: Gathers candidate background and target role details.
-2. PROFILE_BUILD: Generates a structured candidate profile using the Profile Agent.
-3. INTERVIEW_PLAN: Formulates an initial strategy based on the profile and industry benchmarks.
-4. ASK_QUESTION: Presents questions to the candidate.
-5. EVALUATE_ANSWER: Analyzes candidate responses using the Evaluator Agent.
-6. DECIDE_NEXT_STEP: The Strategist Agent determines whether to continue, adjust difficulty, or conclude the session.
-7. COACH: The Coach Agent generates the final performance review.
-8. FINAL_REPORT: Produces the persistent coaching document.
+**On macOS/Linux:**
+```bash
+python3 -m venv coach
+source coach/bin/activate
+```
+
+### 4. Install Dependencies
+Once the environment is active, install the required packages:
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Running the Project
+
+1.  **Activate the environment** (if not already active):
+    *   Windows: `.\coach\Scripts\activate`
+    *   macOS/Linux: `source coach/bin/activate`
+
+2.  **Launch the application**:
+    ```bash
+    python app.py
+    ```
+
+3.  **Access the Dashboard**:
+    The terminal will output a local URL (e.g., `http://127.0.0.1:7860`). Open this link in your web browser to start your mock interview.
+
+---
+
+## Usage Guide
+1.  **Intake**: Enter your target role (e.g., "Software Engineer") and focus area (e.g., "System Design"). Upload your resume PDF and click **Start Interview**.
+2.  **Interviewing**: Read the AI's question in the chat. Use the **Microphone** to record your answer or type it in the text box, then click **Submit Answer**.
+3.  **Evaluation**: You can toggle the "Show/Hide AI Evaluation" to see real-time scores for your latest response.
+4.  **Reporting**: Once finished, click **Finish Interview & Generate Report** to receive your full performance review at the bottom of the page.
+
+---
 
 ## Data Persistence
-All session data, including transcripts, evaluator outputs, and metrics, are stored locally in the data/sessions directory. Each session is assigned a unique identifier for traceability and offline review.
+All session transcripts, metrics, and generated reports are saved locally in the `data/sessions` directory for your review.

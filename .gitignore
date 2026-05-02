@@ -15,5 +15,5 @@ logs/
 
 # IDEs
 .vscode/
-.idea/
 .gemini/
+.serena/
